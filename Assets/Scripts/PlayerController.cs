@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	public Joystick joystick;
+    public Joystick joystick;
+    public Vector2 dirVector;
+    private Vector2 movement;
+    private Rigidbody2D rd2d;
+    public static PlayerController instance;
 
     public int speed;
-	public float maxSpeed;
+    public float maxSpeed;
 
-    public Vector2 dirVector;
+    bool isUnBeatTime = false;
+    public bool isCollide = false;
 
-    private Rigidbody2D rd2d;
-    
-	private Vector2 movement;
+    public int CoinNum = 0;
+    public int PotionNum = 0;
+    public int CharmNum = 0;
 
-
-	void Start()
+    void Start()
 	{
 		rd2d = GetComponent<Rigidbody2D> ();
 		movement = Vector2.zero;

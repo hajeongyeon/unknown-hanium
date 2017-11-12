@@ -48,8 +48,8 @@ public class Perspective : Sense
             // Call Animation Energy Bolt to player
             GameObject projectile = Instantiate(bullet, bulletLocation.position, bulletLocation.rotation);
             Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-            bullet.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+            projectile.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            projectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
             Destroy(projectile, 6);
             yield return new WaitForSeconds(idleForShoot);
         }
