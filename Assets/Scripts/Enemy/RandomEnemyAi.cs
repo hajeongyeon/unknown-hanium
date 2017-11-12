@@ -103,7 +103,7 @@ public class RandomEnemyAi : MonoBehaviour
         chasing = false;
     }
 
-    private void RotateEnemy()
+    public void RotateEnemy()
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
