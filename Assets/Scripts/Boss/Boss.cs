@@ -6,7 +6,6 @@ public class Boss : MonoBehaviour {
     enum Pattern { None,Hail,MeteorFall,Earthquake}
     
     public GameObject bolt;
-    public Transform boltLocation;
     public GameObject meteor;
     public GameObject bigMeteor;
     public GameObject earthquake;
@@ -82,8 +81,7 @@ public class Boss : MonoBehaviour {
             Vector3 direction = target.transform.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             // Call Animation Energy Bolt to player
-            GameObject bullet = Instantiate(bolt, boltLocation.position, boltLocation.rotation);
-            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            GameObject bullet = Instantiate(bolt);
             bullet.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
             bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
             Destroy(bullet, 6);
@@ -95,7 +93,6 @@ public class Boss : MonoBehaviour {
         Vector3 RandomPos = new Vector3(Random.Range(-41, 31), Random.Range(-17, 42), 0);
         // Call Hail and repeat 20 per 0.1f to random position
         GameObject hail = Instantiate(meteor);
-        Physics2D.IgnoreCollision(hail.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         hail.transform.position = RandomPos;
         //Debug.Log("is Hailing");
         anim.SetBool("isTriggeredHail", true);
@@ -108,7 +105,6 @@ public class Boss : MonoBehaviour {
     void meteorFall()
     {
         GameObject BigMeteor = Instantiate(bigMeteor);
-        Physics2D.IgnoreCollision(BigMeteor.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         BigMeteor.transform.position = target.transform.position;
         anim.SetBool("isTriggeredFallMeteor", true);
         // TODO add a falling meteor animation
@@ -119,7 +115,6 @@ public class Boss : MonoBehaviour {
     void Earthquake()
     {
         GameObject earth = Instantiate(earthquake);
-        Physics2D.IgnoreCollision(earth.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         earth.transform.position = new Vector2(transform.position.x, transform.position.y - 3.0f);
         anim.SetBool("isTriggeredEarthquake", true);
         // TODO add a split ground animation
