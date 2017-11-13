@@ -15,8 +15,12 @@ public class PlayerController : MonoBehaviour
     
 	private Vector2 movement;
 
+    public int CoinNum = 0;
+    public int PotionNum = 0;
+    public int CharmNum = 0;
 
-	void Start()
+
+    void Start()
 	{
 		rd2d = GetComponent<Rigidbody2D> ();
 		movement = Vector2.zero;
