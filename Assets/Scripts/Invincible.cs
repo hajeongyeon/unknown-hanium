@@ -6,7 +6,14 @@ public class Invincible : MonoBehaviour {
 	public bool Invin;
 	public bool InvinTime;
 
-	void Start(){
+    public static Invincible instancei;
+
+    private void Awake()
+    {
+        instancei = this;
+    }
+
+    void Start(){
 		Invin = false;
 		InvinTime = false;
 	}
